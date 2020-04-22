@@ -137,9 +137,9 @@ def Reduction_B(input):
     return x
 
 def Inception_V4(input_shape, classes=1000):
-    x = tf.keras.Input(shape=input_shape)
+    input = tf.keras.Input(shape=input_shape, name='image_input')
 
-    x = Stem(x)
+    x = Stem(input)
     
     for _ in range(4):
         x = Inception_A(x)
@@ -156,7 +156,7 @@ def Inception_V4(input_shape, classes=1000):
         
     x = GlobalAvgPool2D()(x)
     
-    x = tf.keras.layers.Dropout(rate=0.8)(x)
+    x = tf.keras.layers.Dropout(rate=0.5)(x)
     
     output = Dense(units=classes, activation='softmax', name='output')(x)
     
@@ -168,6 +168,6 @@ if __name__ == "__main__":
     from tensorflow.keras.utils import plot_model
 
     input_shape = (500, 500, 1)
-    model = Inception_v4(input_shape)
+    model = Inception_V4(input_shape)
 
     plot_model(model)
