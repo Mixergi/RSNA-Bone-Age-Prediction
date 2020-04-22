@@ -136,7 +136,7 @@ def Reduction_B(input):
     
     return x
 
-def Inception_v4(input_shape, classes=1000):
+def Inception_V4(input_shape, classes=1000):
     x = tf.keras.Input(shape=input_shape)
 
     x = Stem(x)
