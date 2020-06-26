@@ -73,6 +73,3 @@ class Inception_Resnet_v2(tf.keras.Model):
         x = self.classification(x)
 
         return x
-
-if __name__ == "__main__":
-    Inception_Resnet_v2(10)
